@@ -1,23 +1,18 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Navigation } from "react-native-navigation";
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
+import LoginScreen from "./src/screens/Login";
+import ProfileScreen from "./src/screens/ProfileScreen";
+import TripsScreen from "./src/screens/TripsScreen";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// Register Screens
+Navigation.registerComponent("tripful.LoginScreen", () => LoginScreen);
+Navigation.registerComponent("tripful.ProfileScreen", () => ProfileScreen);
+Navigation.registerComponent("tripful.TripsScreen", () => TripsScreen);
+
+// Start a App
+Navigation.startSingleScreenApp({
+    screen: {
+        screen: "tripful.LoginScreen",
+        title: "Login"
+    }
+})
